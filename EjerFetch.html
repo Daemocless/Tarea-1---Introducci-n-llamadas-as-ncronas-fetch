@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Fetch</title>
+  </head>
+  <body>
+    <script>
+      async function buscarProducto(id) {
+        const res = await fetch(`https://dummyjson.com/products/${id}`);
+        if (!res.ok) throw new Error(`Error: ${res.status}`);
+        const p = await res.json();
+        console.log(p.title, p.price);
+      }
+      Promise.all([buscarProducto(1), buscarProducto(5), buscarProducto(10)]);
+    </script>
+  </body>
+</html>
